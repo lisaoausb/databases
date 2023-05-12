@@ -62,6 +62,20 @@ class AlbumRepository
 
         # Returns a list of Album objects
 
+    def create
+        # Parameters: a new album class instance
+        # Executes SQL query
+        # INSERT INTO albums (title, release_year, artist_id) VALUES ('new album', 2023, 2)
+        # returns None
+
+    def delete
+        # Parameters: album id we want to delete
+        # executes SQL query
+        # DELETE FROM albums WHERE id = %s, [album_id]
+        # Returns None
+
+    
+    
 6. Write Test Examples
 
 Write Python code that defines the expected behaviour of the Repository class, following your design from the table written in step 5.
@@ -90,6 +104,28 @@ albums[8].release_year # => 1978
 albums[8].artist_id # => 4
 
 Encode this example as a test.
+
+"""
+When we call AlbumRepository#create,
+we will create a new record in our database
+based on the information we pass it (a new instance of album)
+"""
+
+library = AlbumRepository()
+new_album = Album(None, 'new album', 2023, 2)
+library.create(new_album)
+library.all #=> all existing + the new one
+
+"""
+When we all AlbumRepository#delete,
+we will delete an existing record from our database,
+based on the id number we give it
+"""
+library = AlbumRepository()
+library.delete(10)
+library.all #=> all existing - number 10 (beatles)
+
+
 
 7. Test-drive and implement the Repository class behaviour
 

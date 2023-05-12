@@ -23,3 +23,6 @@ albums = album_repository.all()
 
 for album in albums:
     print(album)
+
+album = album_repository.find(3)
+print(f'We want to know what album ID 3 is. It is: {album}.')
